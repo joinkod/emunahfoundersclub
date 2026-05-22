@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMUNAH Founders Club — Cree en lo que puedes construir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7fb;
+      --dark: #0e1428;
+      --dark-2: #141c35;
+      --gold: #c97c3a;
+      --gold-light: #e8a96a;
+      --text: #14192e;
+      --text-muted: #5a607a;
+      --white: #ffffff;
+      --surface: #eeeef8;
+      --border: rgba(0,0,0,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14, 20, 40, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,124,58,0.12);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .nav-cta:hover { background: var(--gold-light); color: var(--dark); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      top: -15%;
+      right: -8%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(201,124,58,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(30,50,120,0.35) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(200,149,42,0.12);
+      color: var(--gold-light);
+      padding: 0.45rem 1.3rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(200,149,42,0.25);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.58);
+      max-width: 520px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--gold);
+      color: var(--white);
+      padding: 1rem 2.4rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .hero-cta:hover {
+      background: var(--gold-light);
+      color: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(200,149,42,0.3);
+    }
+
+    .hero-note {
+      margin-top: 1.2rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    /* SHARED */
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* PAIN */
+    .pain { background: var(--bg); padding: 7rem 2rem; }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 1.8rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: all 0.22s;
+    }
+    .pain-card:hover {
+      border-color: rgba(200,149,42,0.28);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    }
+
+    .pain-icon { font-size: 1.9rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+
+    .pain-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* OPPORTUNITY */
+    .opportunity {
+      background: var(--dark-2);
+      padding: 7rem 2rem;
+      color: var(--white);
+    }
+
+    .opportunity .section-title { color: var(--white); }
+    .opportunity .section-title em { color: var(--gold-light); }
+    .opportunity .section-tag { color: var(--gold-light); }
+
+    .opp-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin: 1rem 0 2.5rem;
+    }
+
+    .opp-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .feature-check {
+      width: 20px;
+      height: 20px;
+      background: rgba(201,124,58,0.15);
+      border: 1px solid rgba(201,124,58,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      color: var(--gold-light);
+    }
+
+    .opp-emblem {
+      background: rgba(201,124,58,0.07);
+      border: 1px solid rgba(201,124,58,0.18);
+      border-radius: 28px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .hebrew-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      color: rgba(232,169,106,0.12);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .emblem-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+    }
+
+    .emblem-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(201,124,58,0.3);
+      margin: 0 auto 1.2rem;
+    }
+
+    .emblem-quote {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.7;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+
+    /* HOW IT WORKS */
+    .how { padding: 7rem 2rem; background: var(--bg); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .steps::after {
+      content: '';
+      position: absolute;
+      top: 1.8rem;
+      left: 18%;
+      right: 18%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,124,58,0.25), transparent);
+    }
+
+    .step { text-align: center; padding: 2.5rem 1.8rem; }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(201,124,58,0.18);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .step-title {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* FOR EVERYONE */
+    .everyone { background: var(--surface); padding: 7rem 2rem; }
+
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 3.5rem;
+    }
+
+    .profile-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 2rem 1.6rem;
+      border: 1px solid var(--border);
+      transition: all 0.22s;
+    }
+    .profile-card:hover {
+      border-color: rgba(200,149,42,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    }
+
+    .profile-emoji { font-size: 2rem; margin-bottom: 0.9rem; display: block; }
+
+    .profile-title {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 7rem 2rem; background: var(--bg); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 2.2rem 2rem;
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 0.88rem;
+      margin-bottom: 1.1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .testi-text {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+
+    .testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      border: 1px solid rgba(201,124,58,0.2);
+    }
+
+    .testi-name { font-weight: 500; font-size: 0.9rem; color: var(--text); }
+    .testi-role { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--dark);
+      padding: 8rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(201,124,58,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .final-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--white);
+      font-weight: 400;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta h2 em { color: var(--gold-light); font-style: italic; }
+
+    .final-cta > div > p {
+      color: rgba(255,255,255,0.45);
+      font-size: 1rem;
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: #25d366;
+      color: var(--white);
+      padding: 1.1rem 2.8rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      position: relative;
+      z-index: 1;
+    }
+    .whatsapp-btn:hover {
+      background: #1fba57;
+      transform: translateY(-3px);
+      box-shadow: 0 18px 52px rgba(37,211,102,0.3);
+    }
+
+    .wa-icon { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .cta-note {
+      margin-top: 1.4rem;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #080f0a;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: rgba(232,169,106,0.4);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-text { font-size: 0.73rem; color: rgba(255,255,255,0.18); letter-spacing: 0.04em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .opp-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .steps::after { display: none; }
+      .profiles-grid { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .pain, .opportunity, .how, .everyone, .testimonials, .final-cta { padding: 5rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .profiles-grid { grid-template-columns: 1fr; }
+      .opp-emblem { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">EMUNAH <span style="font-size:0.75rem; font-weight:300; letter-spacing:0.18em; opacity:0.6; font-style:normal;">FOUNDERS CLUB</span></a>
+    <a href="#contacto" class="nav-cta">Quiero saber más</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Una oportunidad diferente</span>
+      <h1>¿Qué harías si el dinero dejara<br>de ser <em>tu preocupación?</em></h1>
+      <p class="hero-sub">Hay personas comunes construyendo ingresos reales sin dejar sus trabajos, sin inversiones locas, sin experiencia previa.</p>
+      <a href="#contacto" class="hero-cta">
+        Quiero saber cómo
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <p class="hero-note">Sin compromisos. Solo una conversación.</p>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="pain">
+    <div class="container">
+      <p class="section-tag">¿Te suena familiar?</p>
+      <h2 class="section-title">La mayoría vivimos en el mismo <em>ciclo</em></h2>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">😓</div>
+          <p class="pain-text">Trabajas duro pero a fin de mes siempre falta algo. El dinero alcanza, pero nunca sobra.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">⏰</div>
+          <p class="pain-text">Tu tiempo vale más de lo que te pagan. Intercambias horas de vida por un número que no cambia.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🎯</div>
+          <p class="pain-text">Quieres hacer algo diferente pero no sabes qué. Tienes ganas, tienes energía. Solo te falta el camino.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">💭</div>
+          <p class="pain-text">Sueñas con más libertad, con darle más a tu familia, con no depender de un solo ingreso. Pero sigue siendo un sueño.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITY -->
+  <section class="opportunity">
+    <div class="container">
+      <div class="opp-layout">
+        <div>
+          <p class="section-tag">La diferencia</p>
+          <h2 class="section-title">Existe una forma <em>diferente</em><br>de construir tu futuro</h2>
+          <p class="opp-sub">No hablamos de hacerte rico de la noche a la mañana. Hablamos de construir un ingreso real, paralelo a lo que ya haces, que con tiempo y dedicación puede transformar tu vida completamente.</p>
+          <div class="features-grid">
+            <div class="feature-item"><div class="feature-check">✓</div> Sin horarios fijos</div>
+            <div class="feature-item"><div class="feature-check">✓</div> Desde cualquier lugar</div>
+            <div class="feature-item"><div class="feature-check">✓</div> Con el tiempo que tengas</div>
+            <div class="feature-item"><div class="feature-check">✓</div> Ingresos desde el inicio</div>
+            <div class="feature-item"><div class="feature-check">✓</div> Sin experiencia previa</div>
+            <div class="feature-item"><div class="feature-check">✓</div> Comunidad que te respalda</div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:center;">
+          <div class="opp-emblem">
+            <div class="hebrew-text">אמונה</div>
+            <div class="emblem-name">EMUNAH</div>
+            <div style="font-size:0.7rem; letter-spacing:0.2em; color:rgba(232,169,106,0.45); margin-bottom:1.2rem; font-family:'DM Sans',sans-serif;">FOUNDERS CLUB</div>
+            <p class="emblem-quote">"La fe en lo que puedes construir<br>es el primer paso para construirlo."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="container" style="text-align:center;">
+      <p class="section-tag">El proceso</p>
+      <h2 class="section-title">Así de <em>simple</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Conversamos</h3>
+          <p class="step-desc">Hablamos por WhatsApp para conocer tu situación, tus metas y resolver tus dudas. Sin rodeos.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Te mostramos todo</h3>
+          <p class="step-desc">Conoces el sistema completo en una presentación virtual. Claro, transparente, sin letra pequeña.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Tú decides</h3>
+          <p class="step-desc">Sin presión, sin compromisos. Si lo que ves tiene sentido para ti, empezamos. Si no, sin problema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR EVERYONE -->
+  <section class="everyone">
+    <div class="container">
+      <p class="section-tag">Para quién es</p>
+      <h2 class="section-title">No importa dónde estás <em>hoy</em></h2>
+      <div class="profiles-grid">
+        <div class="profile-card">
+          <span class="profile-emoji">👨‍💼</span>
+          <h3 class="profile-title">Empleados</h3>
+          <p class="profile-desc">Quieres un ingreso extra sin dejar tu trabajo. Que sume, no que reemplace.</p>
+        </div>
+        <div class="profile-card">
+          <span class="profile-emoji">🚀</span>
+          <h3 class="profile-title">Emprendedores</h3>
+          <p class="profile-desc">Buscas diversificar fuentes de ingreso y no depender de un solo negocio.</p>
+        </div>
+        <div class="profile-card">
+          <span class="profile-emoji">🏡</span>
+          <h3 class="profile-title">Amas de casa</h3>
+          <p class="profile-desc">Tienes tiempo y capacidad. Solo necesitas el sistema correcto para convertirlos en ingresos.</p>
+        </div>
+        <div class="profile-card">
+          <span class="profile-emoji">🌟</span>
+          <h3 class="profile-title">Jóvenes</h3>
+          <p class="profile-desc">Tienes ganas de construir algo propio. Esta puede ser tu primera gran oportunidad.</p>
+        </div>
+        <div class="profile-card">
+          <span class="profile-emoji">🎖️</span>
+          <h3 class="profile-title">Pensionados</h3>
+          <p class="profile-desc">Quieres seguir activo y generar ingresos extra sin la presión de un trabajo formal.</p>
+        </div>
+        <div class="profile-card">
+          <span class="profile-emoji">🔍</span>
+          <h3 class="profile-title">En búsqueda</h3>
+          <p class="profile-desc">No tienes que esperar a que te llamen. Aquí puedes empezar hoy, desde cero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="section-tag">Lo que dicen</p>
+      <h2 class="section-title">Personas reales, resultados <em>reales</em></h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Empecé sin creerlo del todo. A los tres meses ya tenía un ingreso extra que cubría gastos que antes me quitaban el sueño."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MC</div>
+            <div>
+              <div class="testi-name">María C.</div>
+              <div class="testi-role">Empleada · Bogotá</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Lo que más me gustó fue que nadie me presionó. Me explicaron todo, me dieron tiempo para pensar y cuando decidí entrar, tenía todo claro."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JR</div>
+            <div>
+              <div class="testi-name">Jorge R.</div>
+              <div class="testi-role">Emprendedor · Medellín</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Soy ama de casa y pensé que no era para mí. Hoy manejo mis propios horarios y genero desde casa. Ojalá lo hubiera conocido antes."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">LP</div>
+            <div>
+              <div class="testi-name">Laura P.</div>
+              <div class="testi-role">Ama de casa · Cali</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="contacto">
+    <div class="cta-glow"></div>
+    <div style="position:relative; z-index:1; max-width:600px; margin:0 auto;">
+      <h2>El primer paso es<br><em>una conversación</em></h2>
+      <p>Escríbenos por WhatsApp. Te contamos todo sin rodeos y sin presión.</p>
+      <!-- REEMPLAZA el número: 57XXXXXXXXXX con tu número de WhatsApp -->
+      <a href="https://wa.me/57XXXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20EMUNAH" class="whatsapp-btn" target="_blank" rel="noopener">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+      <p class="cta-note">Respuesta en menos de 24 horas · Sin compromisos</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">EMUNAH <span style="font-size:0.65rem; letter-spacing:0.18em; opacity:0.6;">FOUNDERS CLUB</span></div>
+    <p class="footer-text">© 2025 EMUNAH Founders Club · Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
