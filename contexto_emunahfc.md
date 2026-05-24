@@ -55,22 +55,39 @@
 
 ## 2. Estado del desarrollo
 
-### ⚠️ ADVERTENCIA — Contradicción CODE vs. CHAT
-El contexto anterior marcaba la landing como "Primera versión completa ✅", pero el directorio local **no contiene** `emunah-landing.html`, `vercel.json` ni la carpeta `assets/`. El código puede estar en el repositorio remoto de GitHub (`emunah-founders-club`) o pendiente de creación. Verificar antes de continuar.
+### Correcciones CODE vs. CHAT (verificado mayo 2026 — repo `joinkod/emunahfoundersclub`)
+El contexto anterior tenía inexactitudes frente al código real:
+
+| Qué decía la documentación | Realidad en el código |
+|---|---|
+| Archivo principal: `emunah-landing.html` | Archivo real: **`index.html`** |
+| Scroll reveal JS + nav shadow on scroll | **No hay JavaScript** — cero `<script>` en el HTML |
+| `vercel.json` en el repo | No existe (Vercel sirve `index.html` automáticamente) |
+| Assets / logo SVG | No existe carpeta `assets/` — nav usa texto tipográfico |
 
 ### Módulos por estado
 
-#### Landing page (`emunah-landing.html`)
+#### Landing page (`index.html` — en repo GitHub)
 | Módulo | Estado real |
 |---|---|
-| Archivo HTML en repositorio local | ❌ No encontrado en directorio actual |
-| Deploy en Vercel | ⚠️ No confirmado — verificar repo remoto |
-| Secciones diseñadas (nav, hero, pain, oportunidad, pasos, perfiles, testimoniales, CTA) | 📋 Definidas en documentación |
-| Número WhatsApp real (`57XXXXXXXXXX`) | ❌ Pendiente |
-| Link Zoom (presentación lunes 8pm Colombia) | ❌ Pendiente |
-| Logo SVG de EMUNAH en nav | ❌ Pendiente |
-| Testimoniales reales (nombre, ciudad, resultado) | ❌ Pendiente |
-| Pixel de Meta | ❌ Pendiente |
+| Archivo HTML en repo | ✅ Existe como `index.html` |
+| Deploy en Vercel | ⚠️ Repo existe en GitHub — verificar si hay proyecto Vercel activo |
+| Nav fijo (logo + CTA) | ✅ CSS puro |
+| Hero (pregunta gancho + glows CSS) | ✅ Glows son radial-gradient estáticos, no animados con JS |
+| Pain points (4 cards) | ✅ Implementado |
+| La oportunidad (layout 2 col + emblema אמונה) | ✅ Implementado |
+| Cómo funciona (3 pasos) | ✅ Implementado |
+| Para quién es (6 perfiles) | ✅ Implementado |
+| Testimoniales | ✅ Placeholders (MC/Bogotá, JR/Medellín, LP/Cali) |
+| CTA final con botón WhatsApp | ✅ Implementado |
+| Footer | ✅ Implementado |
+| Responsive (≤768px y ≤480px) | ✅ Media queries presentes |
+| Scroll reveal (IntersectionObserver) | ❌ No existe — documentación lo afirmaba incorrectamente |
+| Nav shadow al hacer scroll | ❌ No existe — no hay JS |
+| Número WhatsApp real | ❌ Sigue como `57XXXXXXXXXX` |
+| Link Zoom | ❌ No aparece en el HTML |
+| Testimoniales reales | ❌ Placeholders |
+| Pixel de Meta | ❌ No implementado |
 
 #### Agente WhatsApp en n8n
 | Nodo | Estado |
@@ -137,13 +154,11 @@ Prompt:  Asistente EMUNAH, califica leads, invita al Zoom lunes 8pm, NUNCA menci
 
 ## 4. Siguiente paso inmediato
 
-### Paso 1 — Verificar dónde está el código
-El directorio local no contiene los archivos de la landing. Antes de cualquier otra acción:
-```
-¿Existe el repo emunah-founders-club en GitHub?
-→ Si sí: clonar localmente y confirmar qué está deployado en Vercel
-→ Si no: crear el HTML desde cero con las secciones documentadas en §2
-```
+### Paso 1 — Confirmar deploy en Vercel
+El repo `joinkod/emunahfoundersclub` existe en GitHub con `index.html` completo. Verificar si hay un proyecto Vercel conectado:
+- Entrar a vercel.com → revisar si `emunahfoundersclub` aparece como proyecto activo
+- Si no: hacer `npx vercel` desde dentro de la carpeta `emunahfoundersclub/`
+- La ruta raíz sirve `index.html` automáticamente — no se necesita `vercel.json`
 
 ### Paso 2 — Desbloquear el agente WhatsApp
 Una vez Meta apruebe el número WhatsApp Business:
@@ -213,4 +228,4 @@ npx vercel --prod
 | Mayo 2025 | Paleta actualizada: azul media noche + ocre suave |
 | Mayo 2025 | Nombre definido: EMUNAH FOUNDERS CLUB. Agente WhatsApp construido en n8n |
 | Mayo 2025 | WhatsApp Business: cuentas test inhabilitadas; revisión solicitada a Meta |
-| Mayo 2026 | Fusión de contextos — detectada ausencia de archivos de código en directorio local |
+| Mayo 2026 | Fusión de contextos + verificación CODE: landing confirmada en repo como `index.html`, sin JS, WhatsApp pendiente |
