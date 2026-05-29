@@ -4,23 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EMUNAH Founders Club — Cree en lo que puedes construir</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Descubre cómo personas comunes están construyendo ingresos reales. Sin experiencia previa, sin inversiones locas. Una conversación puede cambiarlo todo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://emunahfoundersclub.vercel.app">
+
+  <!-- Favicon (SVG inline — reemplazar con archivo cuando haya logo oficial) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230e1428'/><text x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23c97c3a'>E</text></svg>">
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://emunahfoundersclub.vercel.app">
+  <meta property="og:title" content="EMUNAH Founders Club — Cree en lo que puedes construir">
+  <meta property="og:description" content="Personas comunes construyendo ingresos reales. Sin experiencia previa. Una conversación lo cambia todo.">
+  <!-- TODO: crear imagen 1200×630 px, subir a /assets/og-image.jpg y descomentar -->
+  <!-- <meta property="og:image" content="https://emunahfoundersclub.vercel.app/assets/og-image.jpg"> -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EMUNAH Founders Club — Cree en lo que puedes construir">
+  <meta name="twitter:description" content="Personas comunes construyendo ingresos reales. Sin experiencia previa.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f7fb;
-      --dark: #0e1428;
-      --dark-2: #141c35;
-      --gold: #c97c3a;
+      --bg:         #f7f7fb;
+      --dark:       #0e1428;   /* Azul media noche — fondos oscuros */
+      --dark-2:     #141c35;
+      --dark-deep:  #080f0a;   /* Footer */
+      --gold:       #c97c3a;   /* Ocre suave — acento principal */
       --gold-light: #e8a96a;
-      --text: #14192e;
+      --text:       #14192e;
       --text-muted: #5a607a;
-      --white: #ffffff;
-      --surface: #eeeef8;
-      --border: rgba(0,0,0,0.07);
+      --white:      #ffffff;
+      --surface:    #eeeef8;
+      --border:     rgba(0,0,0,0.07);
     }
 
     html { scroll-behavior: smooth; }
@@ -45,6 +69,11 @@
       background: rgba(14, 20, 40, 0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(201,124,58,0.12);
+      transition: box-shadow 0.3s ease, border-bottom-color 0.3s ease;
+    }
+    nav.scrolled {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+      border-bottom-color: rgba(201,124,58,0.25);
     }
 
     .logo {
@@ -82,20 +111,16 @@
 
     .hero-glow-1 {
       position: absolute;
-      top: -15%;
-      right: -8%;
-      width: 700px;
-      height: 700px;
+      top: -15%; right: -8%;
+      width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(201,124,58,0.1) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .hero-glow-2 {
       position: absolute;
-      bottom: -10%;
-      left: -5%;
-      width: 450px;
-      height: 450px;
+      bottom: -10%; left: -5%;
+      width: 450px; height: 450px;
       background: radial-gradient(circle, rgba(30,50,120,0.35) 0%, transparent 65%);
       pointer-events: none;
     }
@@ -130,11 +155,7 @@
       margin-bottom: 1.5rem;
       font-weight: 400;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
 
     .hero-sub {
       font-size: 1.1rem;
@@ -212,7 +233,7 @@
       display: flex;
       gap: 1.2rem;
       align-items: flex-start;
-      transition: all 0.22s;
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
     }
     .pain-card:hover {
       border-color: rgba(200,149,42,0.28);
@@ -221,7 +242,6 @@
     }
 
     .pain-icon { font-size: 1.9rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
-
     .pain-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.6; }
 
     /* OPPORTUNITY */
@@ -230,7 +250,6 @@
       padding: 7rem 2rem;
       color: var(--white);
     }
-
     .opportunity .section-title { color: var(--white); }
     .opportunity .section-title em { color: var(--gold-light); }
     .opportunity .section-tag { color: var(--gold-light); }
@@ -266,8 +285,7 @@
     }
 
     .feature-check {
-      width: 20px;
-      height: 20px;
+      width: 20px; height: 20px;
       background: rgba(201,124,58,0.15);
       border: 1px solid rgba(201,124,58,0.35);
       border-radius: 50%;
@@ -306,20 +324,12 @@
       margin-bottom: 1.5rem;
     }
 
-    .emblem-line {
-      width: 40px;
-      height: 1px;
-      background: rgba(201,124,58,0.3);
-      margin: 0 auto 1.2rem;
-    }
-
     .emblem-quote {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.7;
       font-style: italic;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.7;
     }
 
     /* HOW IT WORKS */
@@ -332,13 +342,11 @@
       margin-top: 4rem;
       position: relative;
     }
-
     .steps::after {
       content: '';
       position: absolute;
       top: 1.8rem;
-      left: 18%;
-      right: 18%;
+      left: 18%; right: 18%;
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(201,124,58,0.25), transparent);
     }
@@ -354,13 +362,7 @@
       margin-bottom: 1.2rem;
     }
 
-    .step-title {
-      font-weight: 500;
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.6rem;
-    }
-
+    .step-title { font-weight: 500; font-size: 1.05rem; color: var(--text); margin-bottom: 0.6rem; }
     .step-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
 
     /* FOR EVERYONE */
@@ -378,7 +380,7 @@
       border-radius: 18px;
       padding: 2rem 1.6rem;
       border: 1px solid var(--border);
-      transition: all 0.22s;
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
     }
     .profile-card:hover {
       border-color: rgba(200,149,42,0.3);
@@ -387,14 +389,7 @@
     }
 
     .profile-emoji { font-size: 2rem; margin-bottom: 0.9rem; display: block; }
-
-    .profile-title {
-      font-weight: 500;
-      font-size: 1rem;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-    }
-
+    .profile-title { font-weight: 500; font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; }
     .profile-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
 
     /* TESTIMONIALS */
@@ -414,28 +409,21 @@
       padding: 2.2rem 2rem;
     }
 
-    .testi-stars {
-      color: var(--gold);
-      font-size: 0.88rem;
-      margin-bottom: 1.1rem;
-      letter-spacing: 0.08em;
-    }
+    .testi-stars { color: var(--gold); font-size: 0.88rem; margin-bottom: 1.1rem; letter-spacing: 0.08em; }
 
     .testi-text {
-      font-size: 0.93rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: 1.5rem;
       font-style: italic;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
     }
 
     .testi-author { display: flex; align-items: center; gap: 0.8rem; }
 
     .testi-avatar {
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       border-radius: 50%;
       background: var(--surface);
       display: flex;
@@ -521,7 +509,7 @@
 
     /* FOOTER */
     footer {
-      background: #080f0a;
+      background: var(--dark-deep);
       padding: 2.5rem 2rem;
       text-align: center;
     }
@@ -536,6 +524,17 @@
     }
 
     .footer-text { font-size: 0.73rem; color: rgba(255,255,255,0.18); letter-spacing: 0.04em; }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -589,19 +588,19 @@
       <p class="section-tag">¿Te suena familiar?</p>
       <h2 class="section-title">La mayoría vivimos en el mismo <em>ciclo</em></h2>
       <div class="pain-grid">
-        <div class="pain-card">
+        <div class="pain-card reveal">
           <div class="pain-icon">😓</div>
           <p class="pain-text">Trabajas duro pero a fin de mes siempre falta algo. El dinero alcanza, pero nunca sobra.</p>
         </div>
-        <div class="pain-card">
+        <div class="pain-card reveal">
           <div class="pain-icon">⏰</div>
           <p class="pain-text">Tu tiempo vale más de lo que te pagan. Intercambias horas de vida por un número que no cambia.</p>
         </div>
-        <div class="pain-card">
+        <div class="pain-card reveal">
           <div class="pain-icon">🎯</div>
           <p class="pain-text">Quieres hacer algo diferente pero no sabes qué. Tienes ganas, tienes energía. Solo te falta el camino.</p>
         </div>
-        <div class="pain-card">
+        <div class="pain-card reveal">
           <div class="pain-icon">💭</div>
           <p class="pain-text">Sueñas con más libertad, con darle más a tu familia, con no depender de un solo ingreso. Pero sigue siendo un sueño.</p>
         </div>
@@ -618,12 +617,12 @@
           <h2 class="section-title">Existe una forma <em>diferente</em><br>de construir tu futuro</h2>
           <p class="opp-sub">No hablamos de hacerte rico de la noche a la mañana. Hablamos de construir un ingreso real, paralelo a lo que ya haces, que con tiempo y dedicación puede transformar tu vida completamente.</p>
           <div class="features-grid">
-            <div class="feature-item"><div class="feature-check">✓</div> Sin horarios fijos</div>
-            <div class="feature-item"><div class="feature-check">✓</div> Desde cualquier lugar</div>
-            <div class="feature-item"><div class="feature-check">✓</div> Con el tiempo que tengas</div>
-            <div class="feature-item"><div class="feature-check">✓</div> Ingresos desde el inicio</div>
-            <div class="feature-item"><div class="feature-check">✓</div> Sin experiencia previa</div>
-            <div class="feature-item"><div class="feature-check">✓</div> Comunidad que te respalda</div>
+            <div class="feature-item reveal"><div class="feature-check">✓</div> Sin horarios fijos</div>
+            <div class="feature-item reveal"><div class="feature-check">✓</div> Desde cualquier lugar</div>
+            <div class="feature-item reveal"><div class="feature-check">✓</div> Con el tiempo que tengas</div>
+            <div class="feature-item reveal"><div class="feature-check">✓</div> Ingresos desde el inicio</div>
+            <div class="feature-item reveal"><div class="feature-check">✓</div> Sin experiencia previa</div>
+            <div class="feature-item reveal"><div class="feature-check">✓</div> Comunidad que te respalda</div>
           </div>
         </div>
         <div style="display:flex; justify-content:center;">
@@ -644,17 +643,17 @@
       <p class="section-tag">El proceso</p>
       <h2 class="section-title">Así de <em>simple</em></h2>
       <div class="steps">
-        <div class="step">
+        <div class="step reveal">
           <div class="step-number">01</div>
           <h3 class="step-title">Conversamos</h3>
           <p class="step-desc">Hablamos por WhatsApp para conocer tu situación, tus metas y resolver tus dudas. Sin rodeos.</p>
         </div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step-number">02</div>
           <h3 class="step-title">Te mostramos todo</h3>
           <p class="step-desc">Conoces el sistema completo en una presentación virtual. Claro, transparente, sin letra pequeña.</p>
         </div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step-number">03</div>
           <h3 class="step-title">Tú decides</h3>
           <p class="step-desc">Sin presión, sin compromisos. Si lo que ves tiene sentido para ti, empezamos. Si no, sin problema.</p>
@@ -669,32 +668,32 @@
       <p class="section-tag">Para quién es</p>
       <h2 class="section-title">No importa dónde estás <em>hoy</em></h2>
       <div class="profiles-grid">
-        <div class="profile-card">
+        <div class="profile-card reveal">
           <span class="profile-emoji">👨‍💼</span>
           <h3 class="profile-title">Empleados</h3>
           <p class="profile-desc">Quieres un ingreso extra sin dejar tu trabajo. Que sume, no que reemplace.</p>
         </div>
-        <div class="profile-card">
+        <div class="profile-card reveal">
           <span class="profile-emoji">🚀</span>
           <h3 class="profile-title">Emprendedores</h3>
           <p class="profile-desc">Buscas diversificar fuentes de ingreso y no depender de un solo negocio.</p>
         </div>
-        <div class="profile-card">
+        <div class="profile-card reveal">
           <span class="profile-emoji">🏡</span>
           <h3 class="profile-title">Amas de casa</h3>
           <p class="profile-desc">Tienes tiempo y capacidad. Solo necesitas el sistema correcto para convertirlos en ingresos.</p>
         </div>
-        <div class="profile-card">
+        <div class="profile-card reveal">
           <span class="profile-emoji">🌟</span>
           <h3 class="profile-title">Jóvenes</h3>
           <p class="profile-desc">Tienes ganas de construir algo propio. Esta puede ser tu primera gran oportunidad.</p>
         </div>
-        <div class="profile-card">
+        <div class="profile-card reveal">
           <span class="profile-emoji">🎖️</span>
           <h3 class="profile-title">Pensionados</h3>
           <p class="profile-desc">Quieres seguir activo y generar ingresos extra sin la presión de un trabajo formal.</p>
         </div>
-        <div class="profile-card">
+        <div class="profile-card reveal">
           <span class="profile-emoji">🔍</span>
           <h3 class="profile-title">En búsqueda</h3>
           <p class="profile-desc">No tienes que esperar a que te llamen. Aquí puedes empezar hoy, desde cero.</p>
@@ -709,7 +708,7 @@
       <p class="section-tag">Lo que dicen</p>
       <h2 class="section-title">Personas reales, resultados <em>reales</em></h2>
       <div class="testi-grid">
-        <div class="testi-card">
+        <div class="testi-card reveal">
           <div class="testi-stars">★★★★★</div>
           <p class="testi-text">"Empecé sin creerlo del todo. A los tres meses ya tenía un ingreso extra que cubría gastos que antes me quitaban el sueño."</p>
           <div class="testi-author">
@@ -720,7 +719,7 @@
             </div>
           </div>
         </div>
-        <div class="testi-card">
+        <div class="testi-card reveal">
           <div class="testi-stars">★★★★★</div>
           <p class="testi-text">"Lo que más me gustó fue que nadie me presionó. Me explicaron todo, me dieron tiempo para pensar y cuando decidí entrar, tenía todo claro."</p>
           <div class="testi-author">
@@ -731,7 +730,7 @@
             </div>
           </div>
         </div>
-        <div class="testi-card">
+        <div class="testi-card reveal">
           <div class="testi-stars">★★★★★</div>
           <p class="testi-text">"Soy ama de casa y pensé que no era para mí. Hoy manejo mis propios horarios y genero desde casa. Ojalá lo hubiera conocido antes."</p>
           <div class="testi-author">
@@ -752,7 +751,7 @@
     <div style="position:relative; z-index:1; max-width:600px; margin:0 auto;">
       <h2>El primer paso es<br><em>una conversación</em></h2>
       <p>Escríbenos por WhatsApp. Te contamos todo sin rodeos y sin presión.</p>
-      <!-- REEMPLAZA el número: 57XXXXXXXXXX con tu número de WhatsApp -->
+      <!-- REEMPLAZAR: 57XXXXXXXXXX → número real de WhatsApp -->
       <a href="https://wa.me/57XXXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20EMUNAH" class="whatsapp-btn" target="_blank" rel="noopener">
         <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -766,8 +765,34 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">EMUNAH <span style="font-size:0.65rem; letter-spacing:0.18em; opacity:0.6;">FOUNDERS CLUB</span></div>
-    <p class="footer-text">© 2025 EMUNAH Founders Club · Todos los derechos reservados</p>
+    <p class="footer-text">© 2026 EMUNAH Founders Club · Todos los derechos reservados</p>
   </footer>
+
+  <script>
+    // Scroll reveal — IntersectionObserver, sin librerías
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      // Stagger: delay basado en posición dentro del grupo padre
+      const siblings = Array.from(el.parentElement.querySelectorAll('.reveal'));
+      const index = siblings.indexOf(el);
+      el.style.transitionDelay = `${index * 0.07}s`;
+      observer.observe(el);
+    });
+
+    // Nav sombra al hacer scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
